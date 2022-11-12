@@ -95,12 +95,12 @@ defineProps({
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <Link
-                    :href="route('communities.edit', community.id)"
+                    :href="route('communities.edit', community.slug)"
                     class="text-indigo-600 hover:text-indigo-900 mr-3"
                     >Edit</Link
                   >
                   <Link
-                    :href="route('communities.destroy', community.id)"
+                    :href="route('communities.destroy', community.slug)"
                     class="text-indigo-600 hover:text-red-600"
                     method="delete"
                     as="button"

@@ -28,8 +28,8 @@
           datum
         </div>
       </div>
-      <a  
-        :href="{}"
+      <Link  
+       
       >
         <h5
           class="
@@ -44,16 +44,15 @@
         >
          {{post.title}}
         </h5>
-      </a >
+      </Link >
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
         {{ post.description }}
       </p>
       <div class="flex m-2 p-2">
         <p class="mr-4 p-2">Comments</p>
         <a
-          :href="
-            {}
-          "
+         :href="route('frontend.communities.post.show', [community, post.slug])"
+          
           class="
             inline-flex
             items-center
@@ -86,6 +85,8 @@
 </template>
 
 <script setup>
+
+import {  Link } from "@inertiajs/inertia-vue3";
 defineProps({
     post: Object,
     community: String

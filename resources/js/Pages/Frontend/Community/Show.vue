@@ -2,7 +2,7 @@
   <guest-layout>
     <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                r/{{ community.name}}
+                r/{{ community.name}} 
             </h2>
             <div class="flex justify-end m-2 p-2">
       <Link v-if="$page.props.auth.auth_check" :href="route('communities.posts.create', community.slug)" class="px-3 py-3 rounded bg-indigo-500">Create Post</Link>
@@ -13,7 +13,7 @@
 
     <section class="flex md:flex-row m-2 p-2">
       <div class="w-8/12">
-        <PostCard v-for="post in posts.data" :post="post" :community="community.name" :key="post.id">
+        <PostCard v-for="post in posts.data" :post="post" :community="community.slug" :key="post.id">
       
     </PostCard>
     <div class="mt-4 p-2">

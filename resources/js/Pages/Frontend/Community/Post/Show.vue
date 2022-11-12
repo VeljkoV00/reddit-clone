@@ -1,0 +1,41 @@
+<template>
+    <guest-layout>
+      <template #header>
+              <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                  r/{{ community.name}}
+              </h2>
+              <div class="flex justify-end m-2 p-2">
+        <Link v-if="$page.props.auth.auth_check" :href="route('communities.posts.create', community.slug)" class="px-3 py-3 rounded bg-indigo-500">Create Post</Link>
+      </div>
+          </template>
+     
+     
+  
+      <section class="flex md:flex-row m-2 p-2">
+        <div class="w-8/12">
+            {{ post.title }}
+         Post details
+     
+        </div>
+  
+        <div class="w-4/12 p-2">
+          
+          <div class="m-2 p-2 bg-slate-700 text-white-200">
+            <h2>Latest Communites</h2>
+          </div>
+        </div>
+      </section>
+    </guest-layout>
+  </template>
+  
+  <script setup>
+  
+  import GuestLayout from "@/Layouts/GuestLayout.vue"
+  import PostCard from "@/Components/PostCard.vue"
+  import { Link } from '@inertiajs/inertia-vue3';
+  defineProps({
+      community: Object,
+      post: Object
+  })
+  </script>
+  
