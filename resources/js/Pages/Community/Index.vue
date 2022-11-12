@@ -68,7 +68,7 @@ defineProps({
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-smfont-medium text-gray-900 sm:pl-6">{{ community.name }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ community.slug }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <a href="" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  <Link :href="route('communities.edit', community.id)" class="text-indigo-600 hover:text-indigo-900">Edit</Link>:
                 </td>
               </tr>
             </tbody>
