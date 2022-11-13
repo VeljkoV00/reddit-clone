@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CommunityPostResource extends JsonResource
+class CommunityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +14,10 @@ class CommunityPostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'username' => $this->user->username,
-            'slug' =>$this->slug,
-            'community_slug' => $this->community->slug
-        ] ;
-        
-        
+            'name' => $this->name,
+            'slug' => $this->slug,
+         ];
     }
 }
