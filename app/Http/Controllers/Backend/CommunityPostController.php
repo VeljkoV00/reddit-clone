@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Community;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CommunityPostController extends Controller
 {
-    public function create(Community $community){
+    public function create(Community $community)
+    {
 
         return Inertia::render('Community/Post/Create', compact('community'));
     }
 
-    public function store(StorePostRequest $request, Community $community){
+    public function store(StorePostRequest $request, Community $community)
+    {
 
         $community->posts()->create([
             'user_id' => auth()->id(),
@@ -26,6 +29,25 @@ class CommunityPostController extends Controller
         ]);
 
 
+        return Redirect::route('community.show', $community->slug);
+    }
+
+
+    public function edit(Community $community, Post $post)
+    {
+        return Inertia::render('Community/Post/Edit', compact('community', 'post'));
+    }
+
+    public function update(StorePostRequest $request, Community $community, Post $post){
+
+        $post->update($request->validated());
+
+        return Redirect::route('community.show', $community->slug);
+    }
+
+    public function destroy(Community $community, Post $post){
+
+        $post->delete();
         return Redirect::route('community.show', $community->slug);
 
     }

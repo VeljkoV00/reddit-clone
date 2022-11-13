@@ -88,7 +88,7 @@ defineProps({
                     sm:pl-6
                   "
                 >
-                  {{ community.name }}
+                  <Link :href="route('community.show', community.slug)" class="text-blue-500 hover:text-blue-900 text-semibold">{{ community.name }}</Link>
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   {{ community.slug }}

@@ -13,8 +13,30 @@
   
       <section class="flex md:flex-row m-2 p-2">
         <div class="w-8/12">
-            {{ post.title }}
-         Post details
+            <div class="m-2 p-2 bg-slate-200">
+                <h2 class="font-semibold text-2xl text-black">
+                    <Link :href="route('community.show', community.slug)">
+                        r/{{ community.name }}</Link>
+
+                </h2>
+            </div>
+            <div class="m-2 p-2 bg-slate-200">
+
+                <span class="text-sm text-slate-400">Posted by {{ post.data.username }}</span>
+                <div v-if="$page.props.auth.auth_check && post.data.owner">
+                    <Link class="font-semibold text-blue-400 hover:text-blue-700" :href="(route('communities.posts.edit', [community.slug, post.data.slug]))">Edit</Link>
+                </div>
+                <div v-if="$page.props.auth.auth_check && post.data.owner">
+                    <Link method="delete" as="button" type="button" class="font-semibold text-red-400 hover:text-red-700" :href="(route('communities.posts.destroy', [community.slug, post.data.slug]))">Delete</Link>
+                </div>
+                <h1 class="font-semibold text-3xl text-black">
+                    {{ post.data.title }}
+                </h1>
+                <p class="text-slate-700">{{ post.data.description }}</p>
+                <a :href="post.url" class="font-semibold text-blue-500 text-sm hover:text-blue-900">{{ post.data.url }}</a>
+            </div>
+        
+     
      
         </div>
   
